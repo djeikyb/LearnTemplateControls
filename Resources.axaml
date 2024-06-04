@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:local="clr-namespace:LearnTemplateControls"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Add Resources Here -->
+    <ControlTemplate x:Key="LabeledTextBoxWithTargetTemplate"
+                     TargetType="local:LabeledTextBox">
+        <StackPanel>
+            <Label Content="{TemplateBinding LabelText}"
+                   Target="ManualEntry" />
+            <TextBox Name="ManualEntry" />
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="LabeledTextBoxNoTargetTemplate"
+                     TargetType="local:LabeledTextBox">
+        <StackPanel>
+            <Label Content="{TemplateBinding LabelText}" />
+            <TextBox Name="ManualEntry" />
+        </StackPanel>
+    </ControlTemplate>
+</ResourceDictionary>

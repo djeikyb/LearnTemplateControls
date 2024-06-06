@@ -7,9 +7,20 @@
         x:Class="LearnTemplateControls.MainWindow"
         Title="LearnTemplateControls">
     <StackPanel>
-        <TextBlock Text="Welcome to Avalonia!" />
+
+        <!-- causes the InvalidCastException  -->
         <local:LabeledTextBox
-            LabelText="Some label text"
-            Template="{StaticResource LabeledTextBoxWithTargetTemplate}" />
+            LabelText="Labeled Above TextBox With Target As Simple String"
+            Template="{StaticResource LabeledAboveTextBoxWithTargetAsSimpleString}" />
+
+        <!-- works -->
+        <local:LabeledTextBox
+            LabelText="Labeled Below TextBox With Target As Simple String"
+            Template="{StaticResource LabeledBelowTextBoxWithTargetAsSimpleString}" />
+
+        <!-- works -->
+        <local:LabeledTextBox
+            LabelText="Labeled Above TextBox With Target As Binding"
+            Template="{StaticResource LabeledAboveTextBoxWithTargetAsBinding}" />
     </StackPanel>
 </Window>

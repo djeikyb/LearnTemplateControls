@@ -1,20 +1,34 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:local="clr-namespace:LearnTemplateControls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!-- Add Resources Here -->
-    <ControlTemplate x:Key="LabeledTextBoxWithTargetTemplate"
+
+    <ControlTemplate x:Key="LabeledAboveTextBoxWithTargetAsSimpleString"
+                     TargetType="local:LabeledTextBox">
+        <!-- this one doesn't work, causes InvalidCastException -->
+        <StackPanel>
+            <Label Content="{TemplateBinding LabelText}"
+                   Target="NameOfTextBox" />
+            <TextBox Name="NameOfTextBox" />
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LabeledBelowTextBoxWithTargetAsSimpleString"
+                     TargetType="local:LabeledTextBox">
+        <!-- works -->
+        <StackPanel>
+            <TextBox Name="NameOfTextBox" />
+            <Label Content="{TemplateBinding LabelText}"
+                   Target="NameOfTextBox" />
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LabeledAboveTextBoxWithTargetAsBinding"
                      TargetType="local:LabeledTextBox">
         <StackPanel>
             <Label Content="{TemplateBinding LabelText}"
-                   Target="ManualEntry" />
-            <TextBox Name="ManualEntry" />
-        </StackPanel>
-    </ControlTemplate>
-    <ControlTemplate x:Key="LabeledTextBoxNoTargetTemplate"
-                     TargetType="local:LabeledTextBox">
-        <StackPanel>
-            <Label Content="{TemplateBinding LabelText}" />
-            <TextBox Name="ManualEntry" />
+                   Target="{Binding #Foo}">
+            </Label>
+            <TextBox Name="Foo" />
         </StackPanel>
     </ControlTemplate>
 </ResourceDictionary>
